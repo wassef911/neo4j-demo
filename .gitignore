@@ -161,3 +161,9 @@ cython_debug/
 
 /noe4j/data/**
 **/neo4j/**
+
+shared
+vendor
+*.log
+*.pyc
+__pycache__

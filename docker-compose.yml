@@ -6,7 +6,7 @@ services:
     env_file:
       - ".env"
     ports:
-      - "7474:7474"
+      - "7474:7474" # UI
       - "7687:7687"
     volumes:
       - ./neo4j/data:/data
