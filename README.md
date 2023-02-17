@@ -49,7 +49,7 @@ in your browser check "http://localhost:5000/", and it should return totals:
   total humans = 7 , total businesses = 9
 ```
 
-now, doing an empty POST on "http://localhost:5000/human", should give create a new human and return it's data:
+now, doing an empty POST on "http://localhost:5000/human", should create a new human and return it's data:
 
 ```json
   {
@@ -64,7 +64,7 @@ now, doing an empty POST on "http://localhost:5000/human", should give create a 
 
 you can also do a GET to get a list of humans ...
 
-doing an empty POST on "http://localhost:5000/business", should give create a new business and add a RelationshipTo the last created human...
+doing an empty POST on "http://localhost:5000/business", should create a new business and add a **RelationshipTo** the last created human...
 also GET list of businesses is available.
 
 ---

@@ -12,6 +12,7 @@ app = Flask(__name__)
 fake = Faker()
 config.DATABASE_URL = get_db_url()
 
+
 @app.route("/human", methods=["GET", "POST"])
 def humans():
     if request.method == "GET":
