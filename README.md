@@ -69,6 +69,6 @@ also GET list of businesses is available.
 
 ---
 
-and finally accesing: http://localhost:7474/browser/ should take to Neo4j's user interface.
+and finally accessing: http://localhost:7474/browser/ should take to Neo4j's user interface.
 
 ![Screenshot](https://github.com/wassef911/neo4j-demo/blob/master/screenshot.png?raw=true)
