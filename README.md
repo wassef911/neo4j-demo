@@ -8,6 +8,8 @@ a demo project to working with a graph database, mainly having two endpoint to i
 
 **Python**: 3.8.16
 
+---
+
 ```sh
 ├── README.md
 ├── docker-compose.yml
@@ -15,7 +17,6 @@ a demo project to working with a graph database, mainly having two endpoint to i
 ├── screenshot.png
 ├── src
 |  ├── __init__.py
-|  ├── __pycache__
 |  ├── constant.py
 |  ├── db.py
 |  ├── main.py
@@ -23,9 +24,9 @@ a demo project to working with a graph database, mainly having two endpoint to i
 └── venv
 ```
 
-## Getting Started
-
 ---
+
+## Getting Started
 
 copy the **.env-example** to file called **.env**
 
@@ -47,15 +48,23 @@ start the project:
 flask --app src/main.py --debug run
 ```
 
-in your browser check "http://localhost:5000/", and it will run a seed script and return totals:
+in your browser check "http://localhost:5000/",
+
+and it will run a seed script and return totals:
 
 ```json
-  total humans = 7 , total businesses = 9
+{
+  "total_businesses": 25,
+  "total_humans": 25,
+  "new_opportunities": 5 # total number new random human/business
+}
 ```
 
 ### Human
 
-now, doing an empty POST on "http://localhost:5000/human", should create a new human and return it's data:
+now, doing an empty POST on "http://localhost:5000/human",
+
+should create a new human and return it's data:
 
 ```json
 {
@@ -75,7 +84,9 @@ now, doing an empty POST on "http://localhost:5000/human", should create a new h
 
 you can also do a GET to get a list of all humans...
 
-doing a GET on "http://localhost:5000/human/make_friendship", should create a **FRIEND_WTIH** relation between (first/last) humans:
+doing a GET on "http://localhost:5000/human/make_friendship",
+
+should create a **FRIEND_WTIH** relation between (first/last) humans:
 
 ```json
 {
@@ -102,7 +113,9 @@ doing a GET on "http://localhost:5000/human/make_friendship", should create a **
 
 ### Business
 
-doing an empty POST on "http://localhost:5000/business", should create a new business **OWNED_BY** the last created human...
+doing an empty POST on "http://localhost:5000/business",
+
+should create a new business **OWNED_BY** the last created human...
 
 ```json
 {
@@ -116,6 +129,8 @@ you can also do a GET to get a list of all businesses...
 
 ---
 
-and finally accessing: http://localhost:7474/browser/ should take to Neo4j's user interface.
+and finally accessing: http://localhost:7474/browser/
+
+should take to Neo4j's user interface.
 
 ![Screenshot](https://github.com/wassef911/neo4j-demo/blob/master/screenshot.png?raw=true)
