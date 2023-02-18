@@ -2,6 +2,8 @@
 
 a demo project to working with a graph database, mainly having two endpoint to insert and read data.
 
+### requirements:
+
 **Pip**: 22.0.4
 
 **Python**: 3.8.16
@@ -9,13 +11,15 @@ a demo project to working with a graph database, mainly having two endpoint to i
 ```sh
 ├── README.md
 ├── docker-compose.yml
-├── main.py (server proc)
-├── neo4j
-|  ├── data
-|  ├── import
-|  ├── logs
-|  └── plugins
 ├── requirements.txt
+├── screenshot.png
+├── src
+|  ├── __init__.py
+|  ├── __pycache__
+|  ├── constant.py
+|  ├── db.py
+|  ├── main.py
+|  └── models.py
 └── venv
 ```
 
@@ -40,32 +44,75 @@ docker-compose up -d
 start the project:
 
 ```sh
-flask --app main.py --debug run
+flask --app src/main.py --debug run
 ```
 
-in your browser check "http://localhost:5000/", and it should return totals:
+in your browser check "http://localhost:5000/", and it will run a seed script and return totals:
 
 ```json
   total humans = 7 , total businesses = 9
 ```
 
+### Human
+
 now, doing an empty POST on "http://localhost:5000/human", should create a new human and return it's data:
 
 ```json
-  {
-  uid: "93f8ed0e-af0b-11ed-96f6-d7b46fcf4698"
-  name: "Ann Mcbride",
-  age: 84,
-  created_at: "2023-02-17T22:39:38.041960+00:00",
-  friends: [ ],
-  businesses: [ ],
-  }
+{
+    "uid": "0a788d76-af8a-11ed-b23b-45cbc219d73c",
+    "name": "Sean Novak",
+    "age": 90,
+    "businesses": [
+      {
+        "uid": "0a788d76-af8a-11ed-b23b-45cbc219d73c",
+        "created_at": "2023-02-18T13:44:53.437408+00:00",
+        "profit": 848288
+      }
+    ],
+    "created_at": "2023-02-18T13:44:53.437408+00:00"
+  },
 ```
 
-you can also do a GET to get a list of humans ...
+you can also do a GET to get a list of all humans...
 
-doing an empty POST on "http://localhost:5000/business", should create a new business and add a **RelationshipTo** the last created human...
-also GET list of businesses is available.
+doing a GET on "http://localhost:5000/human/make_friendship", should create a **FRIEND_WTIH** relation between (first/last) humans:
+
+```json
+{
+  "name": "Vanessa Rodriguez",
+  "uid": "bfa37f9e-af8a-11ed-b23b-45cbc219d73c",
+  "age": 60,
+  "businesses": [
+    {
+      "created_at": "2023-02-18T13:49:57.386466+00:00",
+      "profit": 588887,
+      "uid": "bfa37f9e-af8a-11ed-b23b-45cbc219d73c"
+    },
+    {
+      "created_at": "2023-02-18T13:49:57.386466+00:00",
+      "profit": 118838,
+      "uid": "bfa37f9e-af8a-11ed-b23b-45cbc219d73c"
+    }
+  ],
+  "created_at": "2023-02-18T13:49:57.386466+00:00"
+}
+```
+
+---
+
+### Business
+
+doing an empty POST on "http://localhost:5000/business", should create a new business **OWNED_BY** the last created human...
+
+```json
+{
+  "created_at": "2023-02-18T13:44:53.437408+00:00",
+  "profit": 848288,
+  "uid": "0a788d76-af8a-11ed-b23b-45cbc219d73c"
+}
+```
+
+you can also do a GET to get a list of all businesses...
 
 ---
 

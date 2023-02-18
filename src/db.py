@@ -1,11 +1,14 @@
-from dotenv import load_dotenv
+from __future__ import annotations
+
 import os
+
+from dotenv import load_dotenv
 
 
 def get_db_url():
     load_dotenv()
-    user = os.environ.get("DB_USER")
-    password = os.environ.get("DB_PASSWORD")
-    db_host = os.environ.get("DB_HOST", default="localhost")
-    db_port = os.environ.get("DB_PORT", default=7687)
-    return f"bolt://{user}:{password}@{db_host}:{db_port}"
+    user = os.environ.get('DB_USER')
+    password = os.environ.get('DB_PASSWORD')
+    db_host = os.environ.get('DB_HOST', default='localhost')
+    db_port = os.environ.get('DB_PORT', default=7687)
+    return f'bolt://{user}:{password}@{db_host}:{db_port}'
