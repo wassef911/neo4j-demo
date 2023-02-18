@@ -48,6 +48,8 @@ start the project:
 flask --app src/main.py --debug run
 ```
 
+---
+
 in your browser check "http://localhost:5000/",
 
 and it will run a seed script and return totals:
@@ -59,6 +61,8 @@ and it will run a seed script and return totals:
   "new_opportunities": 5 # total number new random human/business
 }
 ```
+
+---
 
 ### Human
 
